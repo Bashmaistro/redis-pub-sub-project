@@ -11,19 +11,19 @@ export class RedisService {
     private subscriber: RedisClient;
 
     constructor() {
-        this.publisher = new Redis(); // Varsayılan Redis bağlantısı, localhost:6379
-        this.subscriber = this.publisher.duplicate(); // Subscriber, publisher'a bağlı olarak oluşturulur
+        this.publisher = new Redis(); 
+        this.subscriber = this.publisher.duplicate(); 
     }
 
 
     async publish(channel:string , message: string){
-        console.log("publishte");
+        
         
         await this.publisher.publish(channel, JSON.stringify(message));
     }
 
     async subscribe(channel: string, callback: (message: any) => void) {
-        console.log("substa");
+        
         await this.subscriber.subscribe(channel);
         this.subscriber.on('message', (chan, msg) => {
           if (chan === channel) {

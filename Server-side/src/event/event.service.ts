@@ -111,7 +111,7 @@ export class EventService {
         return new Promise((resolve, reject) => {
             this.redisService.subscribe(pubUsername, (message) => {
               console.log(`Received message from ${pubUsername}:`, message);
-              resolve(message); // Mesajı geri döndürmek isterseniz
+              resolve(message); 
             });
           });
     }
